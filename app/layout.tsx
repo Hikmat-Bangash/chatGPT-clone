@@ -7,12 +7,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
-      <body>{children}</body>
+      <body>
+        <div className="flex">
+         {/* //sidebar */}
+          
+          {/* clientProvider - notification */}
+
+         <div className="bg-slate-600 flex-1">{children} </div>  
+         
+        </div>
+      
+      
+      </body>
     </html>
   )
 }
