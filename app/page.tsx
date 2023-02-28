@@ -1,6 +1,4 @@
 import { SunIcon, ExclamationTriangleIcon, BoltIcon } from "@heroicons/react/24/outline";
-import { Inter } from "@next/font/google";
-import styles from "./page.module.css";
 
 // const inter = Inter({ subsets: ["latin"] });
 
