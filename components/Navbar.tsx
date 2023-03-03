@@ -7,6 +7,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/firebase';
+import Link from "next/link";
 
 
 
@@ -31,12 +32,14 @@ const Navbar = ({ sidebarActive, setsidebarActive }: Props) => {
   };
 
   return (
-    <div className="sm:hidden fixed h-10 px-3 w-full text-white flex justify-between items-center bg-[#434654] shadow-sm shadow-gray-400">
+    <div className="sm:hidden fixed h-11 px-3 w-full text-white flex justify-between items-center bg-[#434654] shadow-sm shadow-gray-400">
       {/* <AiOutlineMenu /> */}
-      <h1 onClick={() => setsidebarActive(!sidebarActive)}> <AiOutlineMenu/></h1>
+      <h1 onClick={() => setsidebarActive(!sidebarActive)}> <AiOutlineMenu className="text-xl" /></h1>
+      <Link href='/'>
       <h1 className="tracking-[3px]">ChatGPT</h1>
+      </Link>
       <h1 onClick={creatNewChat}>
-        <PlusIcon className="h-6 w-6" />
+        <PlusIcon className="h-6 w-6 font-bold" />
       </h1>
     </div>
   );

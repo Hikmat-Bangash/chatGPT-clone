@@ -32,7 +32,7 @@ const Sidebar = ({ sidebarActive, setsidebarActive }: Props) => {
   return (
     <div className="flex flex-col w-[80%] sm:w-full h-screen z-50 shadow-sm shadow-transparent bg-[#202123f6] pt-3 transition-all ease-in duration-200">
       <div className="flex-1 overflow-hidden">
-        <div className="relative wraper">
+        <div className="relative ml-2 wraper">
           <div className="relative z-50 w-full sm:w-[90%] overflow-hidden">
             <NewChat
               sidebarActive={sidebarActive}
@@ -73,9 +73,9 @@ const Sidebar = ({ sidebarActive, setsidebarActive }: Props) => {
           )}
         </div>
         {/* Developer info */}
-        <div className="text-white flex flex-col mt-4 justify-around gap-3 sm:py-0 py-2">
+        <div className="text-white flex flex-col mt-2 justify-around gap-3 sm:py-0 py-2">
           <h5 className="text-center font-normal text-sm mb-2 opacity-40 tracking-[2px]">
-            Connect with us
+            Contact Us
           </h5>
           <div className="flex text-xl  opacity-50 justify-around items-center mb-2">
             <Link href="https://github.com/Hikmat-Bangash">

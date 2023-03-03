@@ -10,7 +10,7 @@ const Message = ({ msg }: Props) => {
     
   return (
     <div
-      className={`py-5 text-white px-5 sm:px-0 ${
+      className={`py-5 text-white px-3 sm:px-0 ${
         isChatGPT && "bg-gray-500/50"
       } `}
     >
