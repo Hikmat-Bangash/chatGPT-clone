@@ -4,9 +4,10 @@ import Query from '@/lib/QueryApi';
 import type { NextApiRequest, NextApiResponse } from 'next'
 import admin from 'firebase-admin'
 import { admindb } from '@/firebaseAdmin';
+import axios, { AxiosResponse } from 'axios';
 
 type Data = {
-    answer: string
+    answer: AxiosResponse<any, any> | string
 }
 
 
@@ -17,9 +18,7 @@ export default async function handler(
     
     
     const { prompt, chatId, model, session } = req.body;
-    
-    console.log(req.body)
-    
+        
     if (!prompt) {
         res.status(400).json({ answer: "Please provide a prompt" });
         return;
@@ -29,12 +28,16 @@ export default async function handler(
         res.status(400).json({ answer: "Please provide a valid chatId" });
         return;
     }
-    //chatGPT QUERY
-    const response = await Query(prompt, chatId, model);
 
+    const response = await axios.post("https://chatgpt-backend-api-fetching.vercel.app/", {
+        message: prompt
+    })
     
+    const chatgptResponse = response.data.message;
+    console.log(response.data.message)
+
     const message: Message = {
-        text: response || "something went wrong while fetching chatGPT response",
+        text: chatgptResponse || "something went wrong while fetching chatGPT response",
         createdAt: admin.firestore.Timestamp.now(),
         user: {
             _id: "chatGPT",
@@ -51,7 +54,6 @@ export default async function handler(
         .collection('messages')
         .add(message);
 
-//   console.log(message.text)
 
-    res.status(200).json({ answer: message.text });
+    res.status(200).json({ answer: response });
 }

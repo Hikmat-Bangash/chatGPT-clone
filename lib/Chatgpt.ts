@@ -5,5 +5,7 @@ const configuration = new Configuration({
 })
 const openai = new OpenAIApi(configuration)
 
-console.log(configuration)
+
+
+
 export default openai

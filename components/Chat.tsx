@@ -30,7 +30,7 @@ const Chat = ({ chatId }: Props) => {
   );
 
   return (
-    <div className='flex-1 overflow-y-auto overflow-x-hidden'>
+    <div className='flex-1 overflow-y-auto overflow-x-hidden mt-10 sm:mt-3 mb-2'>
 
       {messages?.empty && (
         <>
