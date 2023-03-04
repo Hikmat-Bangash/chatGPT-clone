@@ -8,8 +8,7 @@ import { collection, orderBy, query } from 'firebase/firestore';
 import ChatRow from './ChatRow';
 import { Dispatch, SetStateAction } from "react";
 import { TbLogout } from 'react-icons/tb'
-import { AiOutlineGithub, AiOutlineMail, AiOutlineFacebook, AiFillFacebook } from 'react-icons/ai'
-import {FiFacebook, FiGithub, FiLinkedin, FiTwitter} from "react-icons/fi"
+import {FiFacebook, FiGithub, FiInstagram, FiLinkedin, FiTwitter} from "react-icons/fi"
 import Link from 'next/link';
 
 
@@ -30,8 +29,8 @@ const Sidebar = ({ sidebarActive, setsidebarActive }: Props) => {
   );
 
   return (
-    <div className="flex flex-col w-[80%] sm:w-full h-screen z-50 shadow-sm shadow-transparent bg-[#202123f6] pt-3 transition-all ease-in duration-200">
-      <div className="flex-1 overflow-hidden">
+    <div className="flex flex-col w-[80%] sm:w-full h-screen z-50 shadow-sm shadow-transparent bg-[#202123f6] pt-3 border-r-[1px] border-opacity-90 border-gray-600">
+      <div className="flex-1 overflow-hidden ">
         <div className="relative ml-2 wraper">
           <div className="relative z-50 w-full sm:w-[90%] overflow-hidden">
             <NewChat
@@ -40,7 +39,7 @@ const Sidebar = ({ sidebarActive, setsidebarActive }: Props) => {
             />
           </div>
 
-          <div className="mt-2 flex flex-col z-0 overflow-y-auto">
+          <div className="mt-2 flex flex-col z-0 overflow-y-auto h-[29.5rem]">
             {chats?.docs.map((chat) => (
               <ChatRow
                 key={chat.id}
@@ -61,7 +60,7 @@ const Sidebar = ({ sidebarActive, setsidebarActive }: Props) => {
               <img
                 src={session?.user?.image!}
                 alt="profile"
-                className="h-12 w-12 rounded-full hover:opacity-80 cursor-pointer opacity-80"
+                className="h-10 w-10 rounded-full hover:opacity-80 cursor-pointer opacity-80"
               />
               <h4 className="text-gray-500">{session?.user?.name!}</h4>
 
@@ -84,8 +83,8 @@ const Sidebar = ({ sidebarActive, setsidebarActive }: Props) => {
             <Link href="https://www.linkedin.com/in/hikmat-bangash/">
               <FiLinkedin className="hover:opacity-100 hover:animate-pulse transition ease-in-out" />
             </Link>
-            <Link href="https://www.facebook.com/hikmatkhan.bangash?mibextid=ZbWKwL">
-              <FiFacebook className="hover:opacity-100 hover:animate-pulse transition ease-in-out" />
+            <Link href="https://instagram.com/hikmat.bangash_?igshid=ZDdkNTZiNTM=">
+              <FiInstagram className="hover:opacity-100 hover:animate-pulse transition ease-in-out" />
             </Link>
             <Link href="https://twitter.com/HikmatkhanBang5">
               <FiTwitter className="hover:opacity-100 hover:animate-pulse transition ease-in-out" />
