@@ -9,6 +9,29 @@
   margin: 0;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+  /* height: 3px; */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 100vh;
+  background: #0574e309;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6a6a6a;
+  border-radius: 100vh;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
 @layer components{
     .InfoText{
       @apply bg-gray-700/50 p-4 rounded-lg max-w-[300px]
@@ -16,6 +39,10 @@
 
     .chatRow{
       @apply rounded-lg px-3 sm:py-3 py-2  text-sm flex items-center space-x-2 hover:bg-gray-700/50 cursor-pointer text-white transition-all ease-in
+    }
+
+    .scrollbar{
+      @apply sc
     }
 }
 

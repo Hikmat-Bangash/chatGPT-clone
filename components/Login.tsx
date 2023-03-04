@@ -2,12 +2,12 @@
 
 import Image from 'next/image'
 import { signIn } from 'next-auth/react'
-import logo from '../public/assets/logo.jpg'
+import logo from '../public/assets/loading.png'
 import {FcGoogle} from 'react-icons/fc'
 
 const Login = () => {
   return (
-    <div className="bg-[#28ad74c7] h-screen flex flex-col items-center justify-center  text-center">
+    <div className="bg-[#040e0ab9] h-screen flex flex-col items-center justify-center text-center">
       <Image
         src={logo}
         width={150}
@@ -15,7 +15,7 @@ const Login = () => {
         className="rounded-full animate-bounce transition-all ease-in duration-100"
         alt="logo"
       />
-      <h1 className="text-3xl font-normal text-cyan-100 my-4 tracking-[6px]">
+      <h1 className="text-3xl font-semibold text-white my-4 tracking-[3px]">
         ChatGPT
       </h1>
 

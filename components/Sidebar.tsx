@@ -10,7 +10,7 @@ import { Dispatch, SetStateAction } from "react";
 import { TbLogout } from 'react-icons/tb'
 import {FiFacebook, FiGithub, FiInstagram, FiLinkedin, FiTwitter} from "react-icons/fi"
 import Link from 'next/link';
-
+import Loading from '@/app/Loading';
 
 type Props = {
   setsidebarActive: Dispatch<SetStateAction<boolean>>;
@@ -28,6 +28,8 @@ const Sidebar = ({ sidebarActive, setsidebarActive }: Props) => {
       )
   );
 
+  console.log(`checking chats loading: ${loading}`)
+
   return (
     <div className="flex flex-col w-[80%] sm:w-full h-screen z-50 shadow-sm shadow-transparent bg-[#202123f6] pt-3 border-r-[1px] border-opacity-90 border-gray-600">
       <div className="flex-1 overflow-hidden ">
@@ -39,16 +41,26 @@ const Sidebar = ({ sidebarActive, setsidebarActive }: Props) => {
             />
           </div>
 
+           
           <div className="mt-2 flex flex-col z-0 overflow-y-auto h-[29.5rem]">
+            {loading ? (
+              <div className="flex justify-center items-center h-[29.5rem]">
+              <Loading />
+              </div>
+            ) :
+              <>
             {chats?.docs.map((chat) => (
               <ChatRow
-                key={chat.id}
-                id={chat.id}
-                sidebarActive={sidebarActive}
-                setsidebarActive={setsidebarActive}
+              key={chat.id}
+              id={chat.id}
+              sidebarActive={sidebarActive}
+              setsidebarActive={setsidebarActive}
               />
-            ))}
+              ))}
+              </>
+         }
           </div>
+
         </div>
       </div>
 
