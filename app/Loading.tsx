@@ -4,7 +4,7 @@ import loadingIcon from "../public/assets/loading.png";
 
 
 
-const loading = () => {
+const Loading = () => {
   return (
     <div className=" w-full h-screen bg-transparent flex justify-center items-center">
       <Image
@@ -18,4 +18,4 @@ const loading = () => {
   );
 }
 
-export default loading
+export default Loading

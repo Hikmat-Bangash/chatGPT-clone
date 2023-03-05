@@ -34,12 +34,12 @@ const Navbar = ({ sidebarActive, setsidebarActive }: Props) => {
   return (
     <div className="sm:hidden fixed h-11 px-3 w-full text-white flex justify-between items-center bg-[#434654] shadow-sm shadow-gray-400">
       {/* <AiOutlineMenu /> */}
-      <h1 onClick={() => setsidebarActive(!sidebarActive)}> <AiOutlineMenu className="text-xl" /></h1>
+      <h1 onClick={() => setsidebarActive(!sidebarActive)}> <AiOutlineMenu className="text-xl cursor-pointer" /></h1>
       <Link href='/'>
       <h1 className="tracking-[3px]">ChatGPT</h1>
       </Link>
       <h1 onClick={creatNewChat}>
-        <PlusIcon className="h-6 w-6 font-bold" />
+        <PlusIcon className="h-6 w-6 font-bold cursor-pointer" />
       </h1>
     </div>
   );
