@@ -14,7 +14,6 @@ function ChatInput({ chatId }: Props) {
   const { data: session } = useSession();
   const [prompt, setPrompt] = useState("");
 
-  const model = "text-devinci-003";
 
   // send message method definition
   const SendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -45,8 +44,6 @@ function ChatInput({ chatId }: Props) {
       message
     );
 
-    // toast notification to say loading
-    // const notification = toast.loading("Processing...");
     const notification = toast.loading("processing", {
       position: "top-center",
       style: { width: "auto", height: "auto" },
@@ -60,12 +57,9 @@ function ChatInput({ chatId }: Props) {
       body: JSON.stringify({
         prompt: input,
         chatId,
-        model,
         session,
       }),
     }).then((res) => {
-      console.log(res);
-      //toast notification to say success
       toast.success("Responded", {
         id: notification,
       });
@@ -89,7 +83,6 @@ function ChatInput({ chatId }: Props) {
           disabled={!prompt || !session}
           className=" text-white font-bold px-2 py-1  disabled:cursor-not-allowed float-right"
         >
-          {/* <BsFillArrowRightCircleFill className="h-5 w-5" /> */}
           <HiOutlinePaperAirplane className="text-xl rotate-90 text-gr" />
         </button>
       </form>

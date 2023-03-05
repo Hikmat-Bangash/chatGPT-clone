@@ -8,7 +8,10 @@ import ClientProvider from "@/components/ClientProvider";
 import Navbar from "@/components/Navbar";
 import Side_and_Navbar from "@/components/Side_and_Navbar";
 
+
+
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
+
 
   const session = await getServerSession(authOptions);
 

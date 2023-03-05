@@ -1,9 +1,14 @@
 import Image from 'next/image'
 import logo from '../public/assets/loading.png'
+// import '../public/sw'
 import { FiSun } from 'react-icons/fi';
-import { AiFillWarning, AiOutlineWarning } from 'react-icons/ai';
-import {GiPaperWindmill} from 'react-icons/gi'
+import { AiOutlineWarning } from 'react-icons/ai';
+import { GiPaperWindmill } from 'react-icons/gi';
+
+
 export default function Home() {
+
+
   return (
     <>
       <div className=" h-screen gap-5 flex flex-col items-center justify-center text-center">

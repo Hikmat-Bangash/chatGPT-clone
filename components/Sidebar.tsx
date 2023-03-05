@@ -10,7 +10,7 @@ import { Dispatch, SetStateAction } from "react";
 import { TbLogout } from 'react-icons/tb'
 import {FiFacebook, FiGithub, FiInstagram, FiLinkedin, FiTwitter} from "react-icons/fi"
 import Link from 'next/link';
-import Loading from '@/app/Loading';
+import Loading from '@/app/loading';
 
 type Props = {
   setsidebarActive: Dispatch<SetStateAction<boolean>>;
@@ -28,8 +28,6 @@ const Sidebar = ({ sidebarActive, setsidebarActive }: Props) => {
       )
   );
 
-  console.log(`checking chats loading: ${loading}`)
-
   return (
     <div className="flex flex-col w-[80%] sm:w-full h-screen z-50 shadow-sm shadow-transparent bg-[#202123f6] pt-3 border-r-[1px] border-opacity-90 border-gray-600">
       <div className="flex-1 overflow-hidden ">
@@ -41,26 +39,24 @@ const Sidebar = ({ sidebarActive, setsidebarActive }: Props) => {
             />
           </div>
 
-           
           <div className="mt-2 flex flex-col z-0 overflow-y-auto h-[29.5rem]">
             {loading ? (
               <div className="flex justify-center items-center h-[29.5rem]">
-              <Loading />
+                <Loading />
               </div>
-            ) :
+            ) : (
               <>
-            {chats?.docs.map((chat) => (
-              <ChatRow
-              key={chat.id}
-              id={chat.id}
-              sidebarActive={sidebarActive}
-              setsidebarActive={setsidebarActive}
-              />
-              ))}
+                {chats?.docs.map((chat) => (
+                  <ChatRow
+                    key={chat.id}
+                    id={chat.id}
+                    sidebarActive={sidebarActive}
+                    setsidebarActive={setsidebarActive}
+                  />
+                ))}
               </>
-         }
+            )}
           </div>
-
         </div>
       </div>
 
@@ -78,7 +74,7 @@ const Sidebar = ({ sidebarActive, setsidebarActive }: Props) => {
 
               <TbLogout
                 onClick={() => signOut()}
-                className="text-2xl text-white opacity-60"
+                className="text-2xl text-white opacity-60 cursor-pointer hover:opacity-100"
               />
             </>
           )}
@@ -88,18 +84,18 @@ const Sidebar = ({ sidebarActive, setsidebarActive }: Props) => {
           <h5 className="text-center font-normal text-sm mb-2 opacity-40 tracking-[2px]">
             Contact Us
           </h5>
-          <div className="flex text-xl  opacity-50 justify-around items-center mb-2">
+          <div className="flex text-xl justify-around items-center mb-2">
             <Link href="https://github.com/Hikmat-Bangash">
-              <FiGithub className="hover:opacity-100 hover:animate-pulse transition ease-in-out" />
+              <FiGithub className="opacity-50 hover:opacity-100 hover:animate-pulse transition ease-in-out" />
             </Link>
             <Link href="https://www.linkedin.com/in/hikmat-bangash/">
-              <FiLinkedin className="hover:opacity-100 hover:animate-pulse transition ease-in-out" />
+              <FiLinkedin className="hover:opacity-100 opacity-50  hover:animate-pulse transition ease-in-out" />
             </Link>
             <Link href="https://instagram.com/hikmat.bangash_?igshid=ZDdkNTZiNTM=">
-              <FiInstagram className="hover:opacity-100 hover:animate-pulse transition ease-in-out" />
+              <FiInstagram className="hover:opacity-100 opacity-50  hover:animate-pulse transition ease-in-out" />
             </Link>
             <Link href="https://twitter.com/HikmatkhanBang5">
-              <FiTwitter className="hover:opacity-100 hover:animate-pulse transition ease-in-out" />
+              <FiTwitter className="hover:opacity-100 opacity-50  hover:animate-pulse transition ease-in-out" />
             </Link>
           </div>
           <p className="text-gray-400 sm:mt-0 opacity-30 text-[9px] text-center font-sans tracking-widest">

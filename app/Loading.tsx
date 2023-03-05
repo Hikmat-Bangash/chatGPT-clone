@@ -2,9 +2,9 @@ import Image from 'next/image';
 import React from 'react'
 import loadingIcon from "../public/assets/loading.png";
 
-type Props = {}
 
-const loading = (props: Props) => {
+
+const loading = () => {
   return (
     <div className=" w-full h-screen bg-transparent flex justify-center items-center">
       <Image

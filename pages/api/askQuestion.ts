@@ -1,5 +1,4 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import Query from '@/lib/QueryApi';
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 import admin from 'firebase-admin'
@@ -17,7 +16,7 @@ export default async function handler(
 ) {
     
     
-    const { prompt, chatId, model, session } = req.body;
+    const { prompt, chatId, session } = req.body;
         
     if (!prompt) {
         res.status(400).json({ answer: "Please provide a prompt" });
@@ -33,11 +32,10 @@ export default async function handler(
         message: prompt
     })
     
-    const chatgptResponse = response.data.message;
-    console.log(response.data.message)
 
+    
     const message: Message = {
-        text: chatgptResponse || "something went wrong while fetching chatGPT response",
+        text: response.data.message || "something went wrong while fetching chatGPT response",
         createdAt: admin.firestore.Timestamp.now(),
         user: {
             _id: "chatGPT",
