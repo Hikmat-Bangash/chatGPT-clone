@@ -8,8 +8,9 @@ import { collection, orderBy, query } from 'firebase/firestore';
 import ChatRow from './ChatRow';
 import { Dispatch, SetStateAction } from "react";
 import { TbLogout } from 'react-icons/tb'
-import {FiFacebook, FiGithub, FiInstagram, FiLinkedin, FiTwitter} from "react-icons/fi"
+import {FiGithub, FiInstagram, FiLinkedin, FiTwitter} from "react-icons/fi"
 import Link from 'next/link';
+// import Loading from '@/app/loading';
 import Loading from '@/app/loading';
 
 type Props = {

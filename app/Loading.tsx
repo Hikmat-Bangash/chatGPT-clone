@@ -1,8 +1,6 @@
-import Image from 'next/image';
-import React from 'react'
+import Image from "next/image";
+import React from "react";
 import loadingIcon from "../public/assets/loading.png";
-
-
 
 const Loading = () => {
   return (
@@ -16,6 +14,6 @@ const Loading = () => {
       />
     </div>
   );
-}
+};
 
-export default Loading
+export default Loading;
