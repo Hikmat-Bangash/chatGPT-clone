@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import loadingIcon from "../public/assets/loading.png";
 
 const Loading = () => {
