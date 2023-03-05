@@ -10,7 +10,7 @@ import { Dispatch, SetStateAction } from "react";
 import { TbLogout } from 'react-icons/tb'
 import {FiGithub, FiInstagram, FiLinkedin, FiTwitter} from "react-icons/fi"
 import Link from 'next/link';
-import Loading from '../app/loading';
+import CustomLoading from '@/app/CustomeLoading';
 
 type Props = {
   setsidebarActive: Dispatch<SetStateAction<boolean>>;
@@ -42,7 +42,7 @@ const Sidebar = ({ sidebarActive, setsidebarActive }: Props) => {
           <div className="mt-2 flex flex-col z-0 overflow-y-auto h-[29.5rem]">
             {loading ? (
               <div className="flex justify-center items-center h-[29.5rem]">
-                <Loading />
+                <CustomLoading />
               </div>
             ) : (
               <>
