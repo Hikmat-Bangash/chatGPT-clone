@@ -1,10 +1,11 @@
 "use client";
 import { db } from "@/firebase";
 import { HiOutlinePaperAirplane } from "react-icons/hi";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { addDoc, collection, orderBy, query, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 type Props = {
   chatId: string;
@@ -13,7 +14,27 @@ type Props = {
 function ChatInput({ chatId }: Props) {
   const { data: session } = useSession();
   const [prompt, setPrompt] = useState("");
+  const msgRef = useRef<HTMLInputElement> (null);
+  // fetching all messages from firebase
+ const [messages] = useCollection(
+   session &&
+     query(
+       collection(
+         db,
+         "users",
+         session?.user?.email!,
+         "chats",
+         chatId,
+         "messages"
+       ),
+       orderBy("createdAt", "asc")
+     )
+ );
 
+  
+  const msgs:any = messages?.docs.map((msg) => {
+    return msg.data().text;
+  });
 
   // send message method definition
   const SendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,8 +42,11 @@ function ChatInput({ chatId }: Props) {
 
     const input = prompt.trim();
     setPrompt("");
+   
+    msgs.push(input)
+    // console.log(`after push input msg: ${msgs}`)
 
-    const message = {
+    const message: Message = {
       text: input,
       createdAt: serverTimestamp(),
       user: {
@@ -55,7 +79,7 @@ function ChatInput({ chatId }: Props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        prompt: input,
+        prompt: msgs,
         chatId,
         session,
       }),
@@ -74,6 +98,7 @@ function ChatInput({ chatId }: Props) {
           className="bg-transparent text-white w-[80%] focus:outline-none flex-1 disabled:cursor-not-allowed disabled:text-gray-300"
           disabled={!session}
           value={prompt}
+          ref={msgRef}
           onChange={(e) => setPrompt(e.target.value)}
           placeholder="Type your message here..."
         />
