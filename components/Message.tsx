@@ -18,7 +18,7 @@ const Message = ({ msg }: Props) => {
     >
       <div className="flex space-x-5 max-w-2xl mx-auto">
         <img src={msg?.user?.avatar} alt="" className="h-8 w-8" />
-        <p className="py-1 text-sm whitespace-pre-line text-justify">{isChatGPT ? msg.text.substring(1): msg.text}</p>
+        <p className="py-1 text-sm whitespace-pre-line text-justify">{isChatGPT ? msg.text.substring(0): msg.text}</p>
       </div>
     </div>
   );
